@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMR Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        flex-direction: column;
+        gap: 10px;
+      }
+      h1 {
+        margin-top: 20px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #results {
+        height: 30px;
+        width: 200px;
+        border: 1px solid black;
+        border-radius: 3px;
+        margin-top: 5px;
+        padding: 3px;
+        text-align: center;
+      }
+      #details {
+        height: 30px;
+        width: 150px;
+        border: 1px solid black;
+        border-radius: 3px;
+        margin-top: 5px;
+        padding: 3px;
+        text-align: center;
+      }
+
+      .Weight-Guide {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculate Your BMR</h1>
+    <form>
+      <p>
+        <label for="age">Age in Years</label>
+        <input type="text" id="age" />
+      </p>
+
+      <p>
+        <label for="height">Height in cm:</label>
+        <input type="text" id="height" />
+      </p>
+      <p>
+        <label for="weight">Weight in kg:</label>
+        <input type="text" id="weight" />
+      </p>
+      <p id="validation"></p>
+      <button>Calculate</button>
+      <p>Your BMR</p>
+      <div id="results"></div>
+      <!-- <div id="details"></div> -->
+    </form>
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const age = parseInt(document.querySelector("#age").value);
+        const height = parseInt(document.querySelector("#height").value);
+        const weight = parseInt(document.querySelector("#weight").value);
+        const validation = document.querySelector("#validation");
+        const results = document.querySelector("#results");
+        const details = document.querySelector("#details");
+
+        if (age === "" || age < 0 || isNaN(age)) {
+          validation.innerHTML = `Please enter a valid Age ${age}`;
+        } else if (height === "" || height < 0 || isNaN(height)) {
+          validation.innerHTML = `Please enter a valid Height ${height}`;
+        } else if (weight === "" || weight < 0 || isNaN(weight)) {
+          validation.innerHTML = `Please enter a valid Weight ${weight}`;
+        } else {
+          //*For Man
+          // const BMR = 10 * weight + 6.25 * height - 5 * age + 5;
+          //*For Woman
+          const BMR = 10 * weight + 6.25 * height - 5 * age - 161;
+          results.innerHTML = `${BMR} Calories/day`;
+        }
+      });
+    </script>
+  </body>
+</html>

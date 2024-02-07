@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMR Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Calculate Your BMR</h1>
+    <form>
+      <p>
+        <label for="age">Age in Years</label>
+        <input type="text" id="age" />
+      </p>
+      
+      <p>
+        <label for="height">Height in cm:</label>
+        <input type="text" id="height" />
+      </p>
+      <p>
+        <label for="weight">Weight in kg:</label>
+        <input type="text" id="weight" />
+      </p>
+      <p id="validation"></p>
+      <button>Calculate</button>
+      <p>Your BMR</p>
+      <div id="results"></div>
+      <!-- <div id="details"></div> -->
+    </form>
+    <script src="./javascript.js"></script>
+  </body>
+</html>
